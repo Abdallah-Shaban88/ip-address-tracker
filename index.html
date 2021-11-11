@@ -15,15 +15,18 @@
 <body>
   <div class="container">
     <header>
-      <h1 class="title-text">
-        IP Address Tracker
-      </h1>
-      <div class="search-erea">
-        <input type="text" placeholder="Search for any IP address or domain"/>
-        <button type="submit">></button>
+      <div class="text-title">
+        <h1 >
+          IP Address Tracker
+        </h1>
       </div>
+      <form class="search-erea">
+        <input type="text" placeholder="Search for any IP address or domain"/>
+        <button type="submit"></button>
+      </form>
       <div class="info-list">
-        
+        <div class="loader" style="margin: auto; display: none;">Loading...</div>
+        <div class="connetion" style="margin: auto; display: none;">No Internet Connection</div>
       </div>
     </header>
     <div class="map" id="map">

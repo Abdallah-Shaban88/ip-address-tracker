@@ -10,26 +10,28 @@ window.addEventListener("load", function() {
     
 });
 
-//var map = L.map('map');
-
 var layer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
     layer.addTo(map)
 
-console.log(map.options.center)
+localStorage.setItem('map', map)
 
  const searchInput = document.querySelector('input'),
-      searchBtn = document.querySelector('.search-erea button'),
-      ipInfoList = document.querySelector('.info-list')
+      searchForm = document.querySelector('.search-erea'),
+      ipInfoList = document.querySelector('.info-list'),
+      loader = document.querySelector('.loader')
       
  let ip
  
 
-searchBtn.addEventListener('click', (e)  =>{
+searchForm.addEventListener('submit', (e)  =>{
   e.preventDefault();
-  ip = searchInput.value
+  ip = searchInput.value //&& searchInput.value !== ''
+  if(searchInput.value == ''){
+    console.log('empty value');
+    return
+  }
+   loader.style.display = 'block';
    getData(ip)
-  
-  
   searchInput.value = ''
 } )
 
@@ -37,7 +39,11 @@ let  getData = async (ip) => {
  let response = await fetch(`https://geo.ipify.org/api/v1?apiKey=at_NbhUfB5HwTkC1euPGEJTL3FGhUSoX&domain=${ip}`)
  let data = response.json()
  .then(info => {
+   if(!data){
+     console.log("error")
+   }else{
    console.log(info);
+   loader.style.display = 'none'
    ipInfoList.innerHTML =`
    <li>
     <span>IP Address</span>
@@ -56,17 +62,11 @@ let  getData = async (ip) => {
     <span>${info.isp}</span>
    </li>
    `;
-  // map.options.center = [info.location.lat, info.location.lng]
    L.marker([info.location.lat, info.location.lng]).addTo(map);
    map.setView([info.location.lat, info.location.lng], 17)
-
+ }
  })
 }
 
 
-/*function initMap() {
-  map = new google.maps.Map(document.querySelector(".map"), {
-    center: { lat: -34.397, lng: 150.644 },
-    zoom: 8,
-  });
-}*/
+
