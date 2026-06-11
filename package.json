@@ -1,0 +1,27 @@
+{
+  "name": "ip-address-tracker",
+  "version": "1.0.0",
+  "description": "This is my custom solution to the [IP address tracker challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/ip-address-tracker-I8-0yYAH0). It allows users to track any IP address or domain name and instantly see its location on an interactive map.",
+  "main": "script.js",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abdallah-Shaban88/ip-address-tracker.git"
+  },
+  "keywords": [
+    "IP_address_tracker"
+  ],
+  "author": "abdallahshabaan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Abdallah-Shaban88/ip-address-tracker/issues"
+  },
+  "homepage": "https://github.com/Abdallah-Shaban88/ip-address-tracker#readme",
+  "devDependencies": {
+    "vite": "^8.0.16"
+  }
+}
